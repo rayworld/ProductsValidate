@@ -39,5 +39,29 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script>
+    var ProductInfo = {
+        CustomId: "30.01.004.001",
+        StoreId: "20000",
+        ProductId: "02.01.04.003",
+        QRCode: "FAM5NWBqEJZdsX3BjD/MBQ=="
+        }
+
+    $(document).ready(function(){
+        $("button").click(function(){
+            $.ajax({
+                url: "/api/Vali/CheckProdInfo",
+                type: "post",
+                data: ProductInfo,
+                success: function (data) {
+                    alert(data);
+                },
+                error: function (data) {
+                    alert(data.responseText);
+                }
+            });
+        });
+    });
+    </script>
 </body>
 </html>
